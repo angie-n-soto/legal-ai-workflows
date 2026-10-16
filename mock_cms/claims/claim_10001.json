@@ -1,0 +1,122 @@
+{
+  "_comment": "Synthetic data for demonstration only. All names, IDs, addresses and URLs are fictional.",
+  "claim": {
+    "id": 10001,
+    "case_name": "Rivera v. Example Transport LLC",
+    "url": "https://cms.example.com/claims?id=10001",
+    "client": {"first_name": "Maria", "last_name": "Rivera", "dob": "1988-05-12"},
+    "date_of_incident": "2026-02-18",
+    "incident_type": "motor vehicle accident"
+  },
+  "contacts": [
+    {
+      "contact_id": 50011,
+      "name": "Northside Chiropractic",
+      "role": "Medical Provider",
+      "relationship": "Treating Provider",
+      "role_to_case": "Chiropractic care",
+      "notes": "Records requested; awaiting bill.",
+      "address": "100 Example Ave, Suite 200, Dallas, TX 75201",
+      "phone": "(555) 010-0111",
+      "practitioners": ["Jordan Lee, D.C."],
+      "ad_hoc_fields": [
+        {"label": "Provider Type", "type": "dropdown", "value": "Chiropractor"},
+        {"label": "LOP", "type": "dropdown", "value": "Yes"},
+        {"label": "Treatment Status", "type": "dropdown", "value": "Active"},
+        {"label": "Total Billed", "type": "decimal", "value": 4850.00},
+        {"label": "First Visit", "type": "date", "value": "2026-03-04"}
+      ]
+    },
+    {
+      "contact_id": 50012,
+      "name": "Lakeview Imaging Center",
+      "role": "medical provider",
+      "relationship": "Referral",
+      "role_to_case": "MRI - lumbar spine",
+      "notes": "",
+      "address": "2200 Sample Blvd, Plano, TX 75074",
+      "phone": "(555) 010-0122",
+      "ad_hoc_fields": [
+        {"label": "Provider Type", "type": "dropdown", "value": "Imaging"},
+        {"label": "LOP", "type": "dropdown", "value": "No"},
+        {"label": "Treatment Status", "type": "dropdown", "value": "Completed"},
+        {"label": "Total Billed", "type": "decimal", "value": 2100.50},
+        {"label": "Referred By", "type": "contact_reference", "value": {"contact_id": 50011, "name": "Northside Chiropractic"}}
+      ]
+    },
+    {
+      "contact_id": 50013,
+      "name": "Metro Pain & Spine",
+      "role": "MEDICAL PROVIDER",
+      "relationship": "Treating Provider",
+      "role_to_case": "Pain management",
+      "notes": "Patient discharged early. Confirm final balance before settlement and check whether the reduction request from last month was answered.",
+      "address": "45 Placeholder Pkwy, Irving, TX 75038",
+      "billing_address": "PO Box 9900, Austin, TX 78701",
+      "practitioners": ["Sam Ortiz, M.D.", "Priya Shah, M.D."],
+      "ad_hoc_fields": [
+        {"label": "Provider Type", "type": "dropdown", "value": "Pain Management"},
+        {"label": "LOP", "type": "dropdown", "value": "Yes"},
+        {"label": "Treatment Status", "type": "dropdown", "value": "Discharged"},
+        {"label": "Visit Count", "type": "number", "value": 6},
+        {"label": "Empty Field Example", "type": "short_text", "value": null}
+      ]
+    },
+    {
+      "contact_id": 50014,
+      "name": "Riverbend Physical Therapy",
+      "role": "Medical Provider",
+      "relationship": "Referral",
+      "role_to_case": "Physical therapy",
+      "notes": "",
+      "address": "",
+      "ad_hoc_fields": [
+        {"label": "Provider Type", "type": "dropdown", "value": "Physical Therapy"},
+        {"label": "Treatment Status", "type": "dropdown", "value": ""}
+      ]
+    },
+    {
+      "contact_id": 50020,
+      "name": "Example Mutual Insurance",
+      "role": "Insurance Carrier",
+      "relationship": "Defendant Carrier",
+      "role_to_case": "Liability",
+      "notes": "Not a medical provider, so it is excluded from the audit.",
+      "ad_hoc_fields": []
+    },
+    {
+      "contact_id": 50030,
+      "name": "Example Funding Co.",
+      "role": "Litigation Funding",
+      "relationship": "Lienholder",
+      "role_to_case": "Pre-settlement advance",
+      "notes": "",
+      "address": "900 Demo Street, Floor 3, Houston, TX 77002",
+      "ad_hoc_fields": []
+    }
+  ],
+  "ledger": [
+    {"ledger_id": 7001, "contact_id": 50011, "payee": "Northside Chiropractic", "entry_type": "Medical Expense", "date": "2026-10-01", "charge": 4850.00, "current_due": 4850.00, "note": "Running balance through 10/01"},
+    {"ledger_id": 7002, "contact_id": 50012, "payee": "Lakeview Imaging Center", "entry_type": "Medical Expense", "date": "2026-03-20", "charge": 2100.50, "current_due": 2100.50, "note": ""},
+    {"ledger_id": 7003, "contact_id": 50012, "payee": "Lakeview Imaging Center", "entry_type": "Medical Expense", "date": "2026-03-20", "charge": 2100.50, "current_due": 2100.50, "note": "Entered twice?"},
+    {"ledger_id": 7004, "contact_id": 50013, "payee": "Metro Pain and Spine, PLLC", "entry_type": "Medical Expense", "date": "2026-06-30", "charge": 3600.00, "current_due": 2400.00, "note": "Reduction entered by case manager 9/15", "reduction_entered": true},
+    {"ledger_id": 7005, "contact_id": 50030, "payee": "Example Funding Co.", "entry_type": "Loan", "date": "2026-04-01", "charge": 5000.00, "current_due": 6125.00, "note": "Payoff letter dated 9/30", "payoff_good_through": "2026-10-15", "principal": null, "interest": null},
+    {"ledger_id": 7006, "contact_id": null, "payee": "Case filing fee", "entry_type": "Case Cost", "date": "2026-07-01", "charge": 350.00, "current_due": 0.00, "note": ""}
+  ],
+  "treatment_notes": [
+    {"provider": "Northside Chiropractic", "date": "2026-10-01", "text": "Client continuing care 2x/week. Follow-up scheduled 10/22."},
+    {"provider": "Lakeview Imaging Center", "date": "2026-03-20", "text": "Lumbar MRI completed. No further imaging ordered."},
+    {"provider": "Metro Pain & Spine", "date": "2026-06-30", "text": "Discharged at MMI. Final visit 6/30."},
+    {"provider": "Northside Chiropractic", "date": "2026-09-05", "text": "Referred client to Riverbend Physical Therapy."}
+  ],
+  "documents": [
+    {"doc_id": "D01", "folder": "billing", "kind": "bill", "provider": "Northside Chiropractic", "amount": 4850.00, "service_from": "2026-03-04", "service_to": "2026-10-01", "fingerprint": "a1", "final": false},
+    {"doc_id": "D02", "folder": "records", "kind": "record", "provider": "Northside Chiropractic", "service_from": "2026-03-04", "service_to": "2026-10-01", "fingerprint": "a2"},
+    {"doc_id": "D03", "folder": "billing", "kind": "bill", "provider": "Lakeview Imaging Center", "amount": 2100.50, "service_from": "2026-03-20", "service_to": "2026-03-20", "fingerprint": "b1", "final": true},
+    {"doc_id": "D04", "folder": "intake", "kind": "bill", "provider": "Lakeview Imaging Center", "amount": 2100.50, "service_from": "2026-03-20", "service_to": "2026-03-20", "fingerprint": "b1", "final": true},
+    {"doc_id": "D05", "folder": "records", "kind": "record", "provider": "Lakeview Imaging Center", "service_from": "2026-03-20", "service_to": "2026-03-20", "fingerprint": "b2"},
+    {"doc_id": "D06", "folder": "billing", "kind": "bill", "provider": "Metro Pain & Spine", "amount": 3600.00, "service_from": "2026-03-10", "service_to": "2026-06-30", "fingerprint": "c1", "final": true},
+    {"doc_id": "D07", "folder": "archive", "kind": "bill", "provider": "Metro Pain & Spine", "amount": 3600.00, "service_from": "2026-03-10", "service_to": "2026-06-30", "fingerprint": "c1", "final": true},
+    {"doc_id": "D08", "folder": "intake", "kind": "bill", "provider": "Riverbend Physical Therapy", "amount": 1250.00, "service_from": "2026-09-12", "service_to": "2026-10-03", "fingerprint": "d1", "final": false}
+  ]
+}

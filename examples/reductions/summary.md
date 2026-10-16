@@ -1,0 +1,7 @@
+- Reduction Request - Lakeview Imaging Center - Maria Rivera.pdf: Lakeview Imaging Center, 33% reduction, payoff $1,407.34
+- Reduction Request - Metro Pain & Spine - Maria Rivera.pdf: Metro Pain & Spine, 33.33% reduction, payoff $2,400.00
+    - Flag: Address conflict: CMS has '45 Placeholder Pkwy, Irving, TX 75038' and billing address 'PO Box 9900, Austin, TX 78701'. Used the main address; confirm before sending.
+- Reduction Request - Example Funding Co. - Maria Rivera.pdf: Example Funding Co., 50% interest reduction on payoff $6,125.00
+    - Flag: Payoff expired 10/15/2026; the letter asks for an updated payoff.
+    - Flag: Principal and interest are not broken out; the letter requests the breakdown.
+- Held, no letter drafted: Northside Chiropractic

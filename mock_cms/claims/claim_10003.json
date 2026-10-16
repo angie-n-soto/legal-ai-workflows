@@ -1,0 +1,12 @@
+{
+  "_comment": "Synthetic data for demonstration only. All names, IDs and URLs are fictional.",
+  "claim": {
+    "id": 10003,
+    "case_name": "Johnson et al. v. Sample Freight Inc.",
+    "url": "https://cms.example.com/claims?id=10003",
+    "client": {"first_name": "Derek", "last_name": "Johnson", "dob": "1992-01-27"},
+    "date_of_incident": "2026-01-30",
+    "incident_type": "commercial vehicle accident"
+  },
+  "contacts": []
+}

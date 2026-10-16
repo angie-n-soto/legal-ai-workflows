@@ -1,0 +1,65 @@
+{
+  "_comment": "Synthetic e-filing inbox. In the original workflow the model read each PDF's caption; here the caption fields are already extracted so the naming rules can run as code.",
+  "documents": [
+    {
+      "original_filename": "Petition_Rivera.pdf",
+      "received": "2026-10-07",
+      "caption": {
+        "plaintiffs": ["Maria Rivera"],
+        "defendants": ["Example Transport LLC"],
+        "cause_number": "DC-26-01234",
+        "court": "District Court, Example County, Texas",
+        "description": "Plaintiff's Original Petition",
+        "legible": true
+      }
+    },
+    {
+      "original_filename": "notice_hearing.pdf",
+      "received": "2026-01-11",
+      "caption": {
+        "plaintiffs": ["Linh Nguyen"],
+        "defendants": ["Sample Homeowners Insurance Co."],
+        "cause_number": "CC-26-00567",
+        "court": "County Court at Law No. 2, Example County, Texas",
+        "description": "Notice of Hearing",
+        "legible": true
+      }
+    },
+    {
+      "original_filename": "MTC_2026.pdf",
+      "received": "2026-10-14",
+      "caption": {
+        "plaintiffs": ["Derek Johnson", "Tanya Johnson"],
+        "defendants": ["Sample Freight Inc.", "John Doe"],
+        "cause_number": "DC-26-04410",
+        "court": "District Court, Example County, Texas",
+        "description": "Motion for Continuance",
+        "legible": true
+      }
+    },
+    {
+      "original_filename": "scan0042.pdf",
+      "received": "2026-10-15",
+      "caption": {
+        "plaintiffs": [],
+        "defendants": [],
+        "cause_number": "",
+        "court": "",
+        "description": "",
+        "legible": false
+      }
+    },
+    {
+      "original_filename": "pop.pdf",
+      "received": "2026-10-09",
+      "caption": {
+        "plaintiffs": ["M. Rivera"],
+        "defendants": ["Example Transport LLC"],
+        "cause_number": "DC-26-01234",
+        "court": "",
+        "description": "POP",
+        "legible": true
+      }
+    }
+  ]
+}

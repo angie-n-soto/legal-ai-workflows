@@ -1,0 +1,12 @@
+{
+  "_comment": "What a user would ask for: which entities get a reduction letter and at what percentage. Synthetic data.",
+  "claim_id": 10001,
+  "as_of": "2026-10-16",
+  "attorney_name": "[Attorney Name]",
+  "requests": [
+    {"contact_id": 50012, "ledger_id": 7002, "reduction_percent": 33},
+    {"contact_id": 50013, "use_ledger_current_due": true},
+    {"contact_id": 50030, "interest_reduction_percent": 50}
+  ],
+  "hold": [50011]
+}

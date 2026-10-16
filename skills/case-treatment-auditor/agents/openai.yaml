@@ -1,0 +1,6 @@
+interface:
+  display_name: Case Treatment Auditor
+  short_description: Audit treatment status, ledger and records
+  default_prompt: Use $case-treatment-auditor to run a treatment audit on this case.
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,22 @@
+{
+  "_comment": "Synthetic data for demonstration only. A claim with no medical providers.",
+  "claim": {
+    "id": 10002,
+    "case_name": "Nguyen / Sample Property Claim",
+    "url": "https://cms.example.com/claims?id=10002",
+    "client": {"first_name": "Linh", "last_name": "Nguyen", "dob": "1979-11-02"},
+    "date_of_incident": "2026-05-09",
+    "incident_type": "property damage"
+  },
+  "contacts": [
+    {
+      "contact_id": 60001,
+      "name": "Sample Adjusting Co.",
+      "role": "Adjuster",
+      "relationship": "Opposing",
+      "role_to_case": "Property damage",
+      "notes": "",
+      "ad_hoc_fields": null
+    }
+  ]
+}

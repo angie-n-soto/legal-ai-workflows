@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Legal AI Workflows</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --text: #1b2430; --muted: #5b6676; --border: #dde2e8;
+    --accent: #1f3a5f; --accent-soft: #e6edf6; --warn: #8a5a00; --warn-soft: #fff4dc; --code: #f1f3f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #11161d; --surface: #19202a; --text: #e6eaf0; --muted: #9aa5b4; --border: #2b3542;
+      --accent: #8fb3e6; --accent-soft: #1f2b3b; --warn: #f0c060; --warn-soft: #2e2615; --code: #222b37;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 2rem; margin: 0 0 8px; }
+  h2 { font-size: 1.25rem; margin: 0 0 4px; }
+  p { margin: 0 0 12px; }
+  .lede { color: var(--muted); max-width: 70ch; }
+  .banner { background: var(--warn-soft); color: var(--warn); border-radius: 8px; padding: 10px 14px;
+            margin: 16px 0 28px; font-size: .95rem; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+          padding: 20px; margin-bottom: 20px; }
+  .card p.what { color: var(--muted); }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+  button, select, input { font: inherit; }
+  button { background: var(--accent); color: var(--surface); border: 0; border-radius: 8px;
+           padding: 8px 16px; cursor: pointer; }
+  button:disabled { opacity: .6; cursor: progress; }
+  select, input { background: var(--surface); color: var(--text); border: 1px solid var(--border);
+                  border-radius: 8px; padding: 7px 10px; }
+  .out { margin-top: 16px; overflow-x: auto; }
+  .out:empty { display: none; }
+  table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+  .out h3 { font-size: 1.1rem; margin: 18px 0 8px; } .out h4 { font-size: 1rem; margin: 16px 0 6px; }
+  th, td { border-bottom: 1px solid var(--border); padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: var(--accent-soft); }
+  code, pre { background: var(--code); border-radius: 6px; font-size: .88rem; }
+  code { padding: 1px 5px; }
+  pre { padding: 12px; overflow-x: auto; white-space: pre-wrap; }
+  .tag { display: inline-block; background: var(--accent-soft); color: var(--accent); border-radius: 999px;
+         padding: 1px 10px; font-size: .8rem; margin-left: 6px; vertical-align: middle; }
+  .flag { color: var(--warn); }
+  ul.tools { padding-left: 18px; columns: 2; column-gap: 32px; }
+  @media (max-width: 640px) { ul.tools { columns: 1; } h1 { font-size: 1.6rem; } }
+  a { color: var(--accent); }
+  footer { color: var(--muted); font-size: .9rem; margin-top: 32px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Legal AI Workflows</h1>
+  <p class="lede">Four AI agent workflows I built for a personal injury law firm, rebuilt on synthetic data.
+    Run each one below, or connect an AI agent to the MCP server at the bottom of the page.</p>
+  <div class="banner">All names, cases, amounts and addresses here are fictional. No real client or firm data is used.</div>
+
+  <section class="card">
+    <h2>Medical Provider Audit <span class="tag">.xlsx</span></h2>
+    <p class="what">Pulls every medical provider on a case into a review-ready spreadsheet with dropdowns, frozen
+      headers and a provider-count check.</p>
+    <div class="row">
+      <select id="audit-claim"></select>
+      <button id="audit-btn">Download workbook</button>
+    </div>
+    <div class="out" id="audit-out"></div>
+  </section>
+
+  <section class="card">
+    <h2>E-filing Document Renamer <span class="tag">table</span></h2>
+    <p class="what">Turns court-document captions into standard filenames, with a confidence rating. Rows that need
+      a person's review sort to the top.</p>
+    <div class="row"><button id="rename-btn">Rename the sample inbox</button></div>
+    <div class="out" id="rename-out"></div>
+  </section>
+
+  <section class="card">
+    <h2>Provider Reductions <span class="tag">PDF letters</span></h2>
+    <p class="what">Drafts reduction letters from ledger data: a percentage off the bill for medical providers, and an
+      interest-only reduction for litigation-funding companies.</p>
+    <div class="row"><button id="red-btn">Draft letters for the sample request</button></div>
+    <div class="out" id="red-out"></div>
+  </section>
+
+  <section class="card">
+    <h2>Case Treatment Auditor <span class="tag">report</span></h2>
+    <p class="what">Checks whether the client is still treating, reconciles the ledger against bills and records, and
+      lists red flags tied to their source.</p>
+    <div class="row">
+      <select id="treat-claim"></select>
+      <label>as of <input id="treat-date" type="date" value="2026-10-16"></label>
+      <button id="treat-btn">Run audit</button>
+    </div>
+    <div class="out" id="treat-out"></div>
+  </section>
+
+  <section class="card">
+    <h2>MCP server <span class="tag">for AI agents</span></h2>
+    <p class="what">The same case data and workflows, exposed as read-only tools over the Model Context Protocol.
+      Point any MCP client (Claude, ChatGPT connectors, MCP Inspector) at:</p>
+    <pre id="mcp-url"></pre>
+    <p>Tools:</p>
+    <ul class="tools" id="mcp-tools"></ul>
+  </section>
+
+  <footer>Built by Angie Soto · Python, FastAPI, openpyxl, python-docx, MCP · <a href="/api/docs">API docs</a></footer>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+
+async function call(btn, out, fn) {
+  btn.disabled = true; const label = btn.textContent; btn.textContent = "Running…";
+  try { out.innerHTML = await fn(); }
+  catch (e) { out.innerHTML = `<p class="flag">Something went wrong: ${e.message}</p>`; }
+  finally { btn.disabled = false; btn.textContent = label; }
+}
+async function getJSON(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error((await r.json().catch(() => ({}))).detail || r.statusText);
+  return r.json();
+}
+
+(async () => {
+  const claims = await getJSON("/api/claims");
+  for (const sel of [$("audit-claim"), $("treat-claim")]) {
+    sel.innerHTML = claims.map(c => `<option value="${c.id}">${c.case_name}</option>`).join("");
+  }
+  $("mcp-url").textContent = `${location.origin}/mcp`;
+  const tools = await getJSON("/api/mcp-tools");
+  $("mcp-tools").innerHTML = tools.map(t => `<li><code>${t.name}</code>: ${t.description}</li>`).join("");
+})();
+
+$("audit-btn").onclick = () => call($("audit-btn"), $("audit-out"), async () => {
+  const id = $("audit-claim").value;
+  const r = await fetch(`/api/audit/${id}`);
+  if (!r.ok) throw new Error(r.statusText);
+  const name = decodeURIComponent((r.headers.get("content-disposition") || "").split("filename*=utf-8''")[1] || "audit.xlsx");
+  const url = URL.createObjectURL(await r.blob());
+  const a = Object.assign(document.createElement("a"), { href: url, download: name }); a.click();
+  return `<p>Downloaded <a href="${url}" download="${name}">${name}</a>.</p>`;
+});
+
+$("rename-btn").onclick = () => call($("rename-btn"), $("rename-out"), async () => (await getJSON("/api/rename")).html);
+
+$("treat-btn").onclick = () => call($("treat-btn"), $("treat-out"), async () => {
+  const d = await getJSON(`/api/treatment/${$("treat-claim").value}?as_of=${$("treat-date").value}`);
+  return d.html;
+});
+
+$("red-btn").onclick = () => call($("red-btn"), $("red-out"), async () => {
+  const d = await getJSON("/api/reductions");
+  const rows = d.letters.map(l => `<li><a href="${l.url}" target="_blank">${l.name}</a> · payoff $${Number(l.payoff).toLocaleString(undefined, {minimumFractionDigits: 2})}` +
+    l.flags.map(f => `<br><span class="flag">⚑ ${f}</span>`).join("") + "</li>").join("");
+  const notes = d.notes.map(n => `<li>${n}</li>`).join("");
+  return `<ul>${rows}${notes}</ul>`;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+interface:
+  display_name: E-filing Renamer
+  short_description: Name e-filed documents from their captions
+  default_prompt: Use $efiling-document-renamer to rename these e-filed documents.
+policy:
+  allow_implicit_invocation: true
